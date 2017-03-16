@@ -11,18 +11,16 @@ $mail->SMTPSecure = 'ssl';
 // $mail->Port = 587;
 // $mail->SMTPSecure = 'tls';
 
-
-$mail->Username = "atharvapatil1996@gmail.com";
-$mail->Password = "Atharva123!";
+$mail->Username = "blahblah@gmail.com";//Your Email Id here
+$mail->Password = "password";//Your password here
 
 $mail->IsHTML(true); // if you are going to send HTML formatted emails
 $mail->SingleTo = true; // if you want to send a same email to multiple users. multiple emails will be sent one-by-one.
 
-$mail->From = "justashniu@gmail.com";
-$mail->FromName = "Nisheet";
+$mail->From = "blahblah2@gmail.com";
+$mail->FromName = "Blahblah2";
 
-$mail->addAddress("atharvapatil1996@gmail.com","User 1");
-$mail->addAddress("nisheet1.sinvhal@gmail.com","User 2");
+$mail->addAddress("someone@gmail.com","Someone");//Recipient
 
 $mail->Subject = "New Registration";
 $mail->Body='Greetings '.$store_name.'!<br>Welcome to Fresh Food Warehouse<br>

@@ -16,17 +16,16 @@ $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
 $mail->SMTPDebug=3;
 $mail->SMTPAuth=true;
-$mail->Username = "atharvapatil1996@gmail.com";
-$mail->Password = "Atharva123!";
+$mail->Username = "blahblah@gmail.com";//Your Email Id here
+$mail->Password = "password";//Your password here
 
 $mail->IsHTML(true); // if you are going to send HTML formatted emails
 $mail->SingleTo = true; // if you want to send a same email to multiple users. multiple emails will be sent one-by-one.
 
-$mail->From = "nisheet1.sinvhal@gmail.com";
-$mail->FromName = "Nisheet";
+$mail->From = "blahblah2@gmail.com";
+$mail->FromName = "Blahblah2";
 
-$mail->addAddress("atharvapatil1996@gmail.com","Atharva");
-$mail->addAddress("nisheet1.sinvhal@gmail.com","Nisheet");
+$mail->addAddress("someone@gmail.com","Someone");//Recipient
 
 $mail->Subject = "Password-Reset";
 $mail->Body='Click on the below link to reset password<br><a href="localhost/Warehouse/newPass.php?email='.$email.'">reset.php?email='.$email.'</a>';
