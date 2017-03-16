@@ -4,10 +4,10 @@
    {
       $stype=$_SESSION['stype'];
       if (strcmp($stype,'buyer')==0) {
-         header("Location: http://localhost/Warehouse/welcomeb.php");
+         header("Location: http://localhost/Warehouse-management-system-php/welcomeb.php");
          die();
       } else {
-         header("Location: http://localhost/Warehouse/welcomes.php");
+         header("Location: http://localhost/Warehouse-management-system-php/welcomes.php");
          die();
       }
    }

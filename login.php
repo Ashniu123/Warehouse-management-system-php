@@ -9,12 +9,12 @@ if(isset($_SESSION['emp_id']))
    $department=$_SESSION['department'];
    if(strcmp("Managing",$department)==0)
    {
-      header("Location: http://localhost/Warehouse/manager.php");
+      header("Location: http://localhost/Warehouse-management-system-php/manager.php");
       die();
    }
    else
    {
-      header("Location: http://localhost/Warehouse/employee.php");
+      header("Location: http://localhost/Warehouse-management-system-php/employee.php");
       die();
    }
 }
@@ -23,10 +23,10 @@ if(isset($_SESSION['user_email']))
 {
    $stype=$_SESSION['stype'];
    if (strcmp($stype,'buyer')==0) {
-      header("Location: http://localhost/Warehouse/welcomeb.php");
+      header("Location: http://localhost/Warehouse-management-system-php/welcomeb.php");
       die();
    } else {
-      header("Location: http://localhost/Warehouse/welcomes.php");
+      header("Location: http://localhost/Warehouse-management-system-php/welcomes.php");
       die();
    }
 }
@@ -69,10 +69,10 @@ if (isset($_POST['login'])) {
             $_SESSION['s_id']=$row['s_id'];
             $_SESSION['store_name']=$row['store_name'];
             if (strcmp($row['store_type'], 'buyer')==0) {
-                header("Location: http://localhost/Warehouse/welcomeb.php");
+                header("Location: http://localhost/Warehouse-management-system-php/welcomeb.php");
                 die();
             } else {
-                header("Location: http://localhost/Warehouse/welcomes.php");
+                header("Location: http://localhost/Warehouse-management-system-php/welcomes.php");
                 die();
             }
         }
@@ -99,7 +99,7 @@ if (isset($_POST['login'])) {
                   if ($needforecho == 1)
                       echo '<strong>All Fields are Mandatory!</strong>';
                   else if($needforlogin==1)
-                      echo '<strong>Login First</strong>';
+                      echo '<strong class="text-danger">Login First</strong>';
                ?>
             </div>
             <div class="form-group">

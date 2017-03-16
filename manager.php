@@ -18,14 +18,14 @@ if(isset($_SESSION['emp_id']))
    $department=$_SESSION['department'];
    if(strcmp("Managing",$department)!=0)
    {
-      header("Location: http://localhost/Warehouse/employee.php");
+      header("Location: http://localhost/Warehouse-management-system-php/employee.php");
       die();
    }
 }
 else
 {
    $_SESSION['unlog']=1;
-   header("Location: http://localhost/Warehouse/admin.php");
+   header("Location: http://localhost/Warehouse-management-system-php/admin.php");
    die();
 }
 $query="SELECT emp_name FROM employee WHERE emp_id='$emp_id'";

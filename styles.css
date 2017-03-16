@@ -39,12 +39,12 @@ div {
     padding: 10px;
 }
 
-div a{
-   margin-right: -50px;
+div a {
+    margin-right: -50px;
 }
 
-div form div{
-   margin:-10px auto -10px auto;
+div form div {
+    margin: -10px auto -10px auto;
 }
 
 .frm-wel {

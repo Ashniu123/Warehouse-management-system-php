@@ -14,7 +14,7 @@
    else
    {
       $_SESSION['unlog']=1;
-      header("Location: http://localhost/Warehouse/login.php");
+      header("Location: http://localhost/Warehouse-management-system-php/login.php");
       die();
    }
    if(strcmp($stype,'buyer')==0)

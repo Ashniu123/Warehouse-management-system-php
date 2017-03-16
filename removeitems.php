@@ -11,7 +11,7 @@ if(isset($_SESSION['user_email']) && isset($_SESSION['s_id']))
 else
 {
    $_SESSION['unlog']=1;
-   header("Location: http://localhost/Warehouse/login.php");
+   header("Location: http://localhost/Warehouse-management-system-php/login.php");
    die();
 }
 $unauth=0;

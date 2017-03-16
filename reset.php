@@ -14,7 +14,7 @@
 		{
 			echo "<script>alert(\"Please Enter Both The Fields\");</script>";
 		}
-		elseif ($password!=$repassword) 
+		elseif ($password!=$repassword)
 		{
 			echo "<script>alert(\"Passwords do not match!\");</script>";
 		}
@@ -28,7 +28,7 @@
 			$hash = crypt($password, '$2y$10$'.$salt.'$');
 			$query = "UPDATE login SET \"Password\"='$hash' where \"Email\"='$email'";
 			$success=pg_query($db,$query);
-			if ($success) 
+			if ($success)
 			{
 				echo "<script>alert(\"Password Changed Successfully\");</script>";
 				echo "<script>window.close();</script>";
@@ -38,8 +38,8 @@
 				echo "<script>alert(\"Error Changing Password\");</script>";
 				echo "<script>window.close();</script>";
 			}
-		
-			
+
+
 		}
 	}
 
@@ -58,7 +58,7 @@
 <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-   
+
 </head>
 <body>
 <br>
@@ -80,7 +80,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="text-center">
-                          
+
                           <p>No worries we will help you!</p>
                             <div class="panel-body">
                                 <fieldset>
@@ -103,7 +103,7 @@
       <div class="modal-footer">
           <div class="col-md-12">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-		  </div>	
+		  </div>
       </div>
   </div>
   </div>

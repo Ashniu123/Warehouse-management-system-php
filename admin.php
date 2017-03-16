@@ -25,12 +25,12 @@ if(isset($_SESSION['emp_id']))
    $department=$_SESSION['department'];
    if(strcmp("Managing",$department)==0)
    {
-      header("Location: http://localhost/Warehouse/manager.php");
+      header("Location: http://localhost/Warehouse-management-system-php/manager.php");
       die();
    }
    else
    {
-      header("Location: http://localhost/Warehouse/employee.php");
+      header("Location: http://localhost/Warehouse-management-system-php/employee.php");
       die();
    }
 }
@@ -67,12 +67,12 @@ if (isset($_POST['login']))
           $_SESSION['department']=$row['department'];
           if(strcmp($row['department'],'Managing')==0)
           {
-             header("Location: http://localhost/Warehouse/manager.php");
+             header("Location: http://localhost/Warehouse-management-system-php/manager.php");
              die();
           }
           else
           {
-             header("Location: http://localhost/Warehouse/employee.php");
+             header("Location: http://localhost/Warehouse-management-system-php/employee.php");
              die();
           }
        }

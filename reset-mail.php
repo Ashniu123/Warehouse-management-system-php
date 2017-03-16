@@ -28,7 +28,7 @@ $mail->FromName = "Blahblah2";
 $mail->addAddress("someone@gmail.com","Someone");//Recipient
 
 $mail->Subject = "Password-Reset";
-$mail->Body='Click on the below link to reset password<br><a href="localhost/Warehouse/newPass.php?email='.$email.'">reset.php?email='.$email.'</a>';
+$mail->Body='Click on the below link to reset password<br><a href="localhost/Warehouse-management-system-php/newPass.php?email='.$email.'">reset.php?email='.$email.'</a>';
 
 if(!$mail->Send())
 	echo "Email was not sent <br />PHPMailer Error: " . $mail->ErrorInfo;
