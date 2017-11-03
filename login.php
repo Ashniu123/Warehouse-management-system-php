@@ -9,12 +9,12 @@ if(isset($_SESSION['emp_id']))
    $department=$_SESSION['department'];
    if(strcmp("Managing",$department)==0)
    {
-      header("Location: http://localhost/Warehouse-management-system-php/manager.php");
+      header("Location:".get_base_url()."manager.php");
       die();
    }
    else
    {
-      header("Location: http://localhost/Warehouse-management-system-php/employee.php");
+      header("Location:".get_base_url()."employee.php");
       die();
    }
 }
@@ -23,10 +23,10 @@ if(isset($_SESSION['user_email']))
 {
    $stype=$_SESSION['stype'];
    if (strcmp($stype,'buyer')==0) {
-      header("Location: http://localhost/Warehouse-management-system-php/welcomeb.php");
+      header("Location:".get_base_url()."welcomeb.php");
       die();
    } else {
-      header("Location: http://localhost/Warehouse-management-system-php/welcomes.php");
+      header("Location:".get_base_url()."welcomes.php");
       die();
    }
 }
@@ -69,10 +69,10 @@ if (isset($_POST['login'])) {
             $_SESSION['s_id']=$row['s_id'];
             $_SESSION['store_name']=$row['store_name'];
             if (strcmp($row['store_type'], 'buyer')==0) {
-                header("Location: http://localhost/Warehouse-management-system-php/welcomeb.php");
+                header("Location:".get_base_url()."welcomeb.php");
                 die();
             } else {
-                header("Location: http://localhost/Warehouse-management-system-php/welcomes.php");
+                header("Location:".get_base_url()."welcomes.php");
                 die();
             }
         }
@@ -118,7 +118,7 @@ if (isset($_POST['login'])) {
                   echo '<div><strong><em>Invalid Email Id or Password!</em></strong></div>';
             ?>
             <div><a href="register.php">Or Register Now!</a></div>
-            <div><a href="forgotPwd.php">Forgot Password?</a></div>
+            <div><a href="forgotpass.php">Forgot Password?</a></div>
 
             <div ><input class="btn btn-primary" type="submit" value="Login" name="login"></div>
          </form>

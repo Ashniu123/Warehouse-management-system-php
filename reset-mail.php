@@ -1,37 +1,33 @@
 <?php
 
-require 'PHPMailer-master/class.phpmailer.php';
-require 'PHPMailer-master/class.smtp.php';
-//include 'PHPMailer-master/PHPMailerAutoload.php';
+function sendMailToUser($userMail,$userName){
+	include("PHPMailer-master/class.phpmailer.php");
+	
+	$account="blahblah@hotmail.com"; //your email (currently configured for hotmail)
+	$password="Password"; // Your password
 
-$mail = new PHPMailer();
-$mail->IsSMTP();
-$mail->Mailer = 'smtp';
-$mail->Host = 'smtp.gmail.com'; // "ssl://smtp.gmail.com" didn't worked
-//$mail->Port = 465;
-//$mail->SMTPSecure = 'ssl';
-//echo !extension_loaded('openssl')?"Not Available":"Available";
-// or try these settings (worked on XAMPP and WAMP):
-$mail->Port = 587;
-$mail->SMTPSecure = 'tls';
-$mail->SMTPDebug=3;
-$mail->SMTPAuth=true;
-$mail->Username = "blahblah@gmail.com";//Your Email Id here
-$mail->Password = "password";//Your password here
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+	$mail->CharSet = 'UTF-8';
+	$mail->Host = "smtp-mail.outlook.com";
+	$mail->SMTPAuth= true;
+	$mail->Port = 587;
+	$mail->Username= $account;
+	$mail->Password= $password;
+	$mail->SMTPSecure = 'tls';
+	$mail->From = $account;
+	$mail->FromName= "Warehouse Staff";
+	$mail->isHTML(true);
+    $mail->addAddress($userMail);//Recipient
 
-$mail->IsHTML(true); // if you are going to send HTML formatted emails
-$mail->SingleTo = true; // if you want to send a same email to multiple users. multiple emails will be sent one-by-one.
+    $mail->Subject = "Password-Reset for Warehouse";
+    $mail->Body='<br/>Hey '.$userName.'!<br/>Click <a href="'.get_base_url().'newPass.php?email='.$userMail.'">here</a> to reset password<br/>';
 
-$mail->From = "blahblah2@gmail.com";
-$mail->FromName = "Blahblah2";
-
-$mail->addAddress("someone@gmail.com","Someone");//Recipient
-
-$mail->Subject = "Password-Reset";
-$mail->Body='Click on the below link to reset password<br><a href="localhost/Warehouse-management-system-php/newPass.php?email='.$email.'">reset.php?email='.$email.'</a>';
-
-if(!$mail->Send())
-	echo "Email was not sent <br />PHPMailer Error: " . $mail->ErrorInfo;
-else
-	echo "<script>alert(\"Email has been sent\"); </script>";
+    if(!$mail->send()){
+		echo "Mailer Error:\n" . $mail->ErrorInfo;
+		return false;
+	}else{
+		return true;
+	}
+}
 ?>

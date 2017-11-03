@@ -1,33 +1,33 @@
 <?php
-require 'PHPMailer-master/class.phpmailer.php';
-$mail = new PHPMailer();
-$mail->IsSMTP();
-$mail->Mailer = 'smtp';
-$mail->SMTPAuth = true;
-$mail->Host = 'smtp.gmail.com'; // "ssl://smtp.gmail.com" didn't worked
-$mail->Port = 465;
-$mail->SMTPSecure = 'ssl';
-// or try these settings (worked on XAMPP and WAMP):
-// $mail->Port = 587;
-// $mail->SMTPSecure = 'tls';
 
-$mail->Username = "blahblah@gmail.com";//Your Email Id here
-$mail->Password = "password";//Your password here
+function sendMailToUser($userMail,$userName){
+	include("PHPMailer-master/class.phpmailer.php");
+	
+	$account="blahblah@hotmail.com"; //your email (currently configured for hotmail)
+	$password="Password"; // Your password
 
-$mail->IsHTML(true); // if you are going to send HTML formatted emails
-$mail->SingleTo = true; // if you want to send a same email to multiple users. multiple emails will be sent one-by-one.
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+	$mail->CharSet = 'UTF-8';
+	$mail->Host = "smtp-mail.outlook.com";
+	$mail->SMTPAuth= true;
+	$mail->Port = 587;
+	$mail->Username= $account;
+	$mail->Password= $password;
+	$mail->SMTPSecure = 'tls';
+	$mail->From = $account;
+	$mail->FromName= "Warehouse Staff";
+	$mail->isHTML(true);
+    $mail->addAddress($userMail);//Recipient
 
-$mail->From = "blahblah2@gmail.com";
-$mail->FromName = "Blahblah2";
+    $mail->Subject = "Password-Reset for Warehouse";
+    $mail->Body='<br/>Greetings '.$userName.'!<br/>Welcome to Fresh Food Warehouse.<br/> <a href="'.get_base_url().'login.php">Login Now!</a><br/>';
 
-$mail->addAddress("someone@gmail.com","Someone");//Recipient
-
-$mail->Subject = "New Registration";
-$mail->Body='Greetings '.$store_name.'!<br>Welcome to Fresh Food Warehouse<br>
-<a href="localhost/Warehouse/login.php>Login now!</a>';
-
-if(!$mail->Send())
-	echo "Email was not sent <br />PHPMailer Error: " . $mail->ErrorInfo;
-else
-	echo "Email has been sent";
+    if(!$mail->send()){
+		echo "Mailer Error:\n" . $mail->ErrorInfo;
+		return false;
+	}else{
+		return true;
+	}
+}
 ?>

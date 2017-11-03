@@ -18,14 +18,14 @@ if(isset($_SESSION['emp_id']))
    $department=$_SESSION['department'];
    if(strcmp("Managing",$department)==0)
    {
-      header("Location: http://localhost/Warehouse-management-system-php/manager.php");
+      header("Location:".get_base_url()."manager.php");
       die();
    }
 }
 else
 {
    $_SESSION['unlog']=1;
-   header("Location: http://localhost/Warehouse-management-system-php/admin.php");
+   header("Location:".get_base_url()."admin.php");
    die();
 }
 $query="SELECT emp_name FROM employee WHERE emp_id='$emp_id'";
@@ -39,7 +39,7 @@ if(mysqli_num_rows($response))
 ?>
 <html>
 <head>
-   <title>Welcome Manager!</title>
+   <title>Welcome Employee!</title>
    <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
    <link rel="stylesheet" type="text/css" href="styles.css"/>
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -163,5 +163,76 @@ if(mysqli_num_rows($response))
          </form>
       </div>
    </div>
+   <div class="centerFlex">
+      <canvas id="myChart" class="frm-wel" width="400" height="400"></canvas>
+   </div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+   <script>
+      var ctx = document.getElementById("myChart").getContext('2d');
+      
+      <?php 
+            $query = "SELECT COUNT(status) as result FROM orders GROUP BY status ORDER BY status DESC";
+            $response = @mysqli_query($dbc, $query);
+      ?>
+      var labels = ["Delivered","Deleted","Undelivered"];
+      var data = [
+            <?php 
+                  $count_rows = mysqli_num_rows($response);
+                  if($count_rows > 0) 
+                  {
+                        $count=0;
+                        while($row = mysqli_fetch_array($response)) 
+                        {
+                              $count++;
+                              echo $row["result"];
+                              if($count < $count_rows)
+                              {
+                                    echo ',';
+                              }
+                        }
+                        
+                  }
+            ?>
+      ];
+
+      console.log(data);
+
+      var myChart = new Chart(ctx, {
+            type:"pie",
+            data:{
+                  labels: labels,
+                  datasets:[{
+                        label:"Order Status",
+                        data:data,
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                  }]
+            },
+            options:{
+                  cutoutPercentage: 50,
+                  responsive:false,
+                  title:{
+                        display:true,
+                        fontSize:18,
+                        text:"Orders' Status"
+                  }
+            }
+      });
+   </script>
 </body>
 </html>

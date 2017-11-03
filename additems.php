@@ -11,7 +11,7 @@
    else
    {
       $_SESSION['unlog']=1;
-      header("Location: http://localhost/Warehouse-management-system-php/login.php");
+      header("Location:".get_base_url()."login.php");
       die();
    }
    $unauth=0;
@@ -63,7 +63,8 @@
       else {
          $expiry=$_POST['expiry'];
          $current_date=date("Y-m-d");
-         if(strtotime($current_date)>=strtotime($expiry))
+         echo strtotime($expiry).'\n'.strtotime($current_date);
+         if((strtotime($current_date) - strtotime($expiry)) > 0)
             $badexpiry=1;
       }
       if($badexpiry==0)

@@ -25,12 +25,12 @@ if(isset($_SESSION['emp_id']))
    $department=$_SESSION['department'];
    if(strcmp("Managing",$department)==0)
    {
-      header("Location: http://localhost/Warehouse-management-system-php/manager.php");
+      header("Location:".get_base_url()."manager.php");
       die();
    }
    else
    {
-      header("Location: http://localhost/Warehouse-management-system-php/employee.php");
+      header("Location:".get_base_url()."employee.php");
       die();
    }
 }
@@ -67,12 +67,12 @@ if (isset($_POST['login']))
           $_SESSION['department']=$row['department'];
           if(strcmp($row['department'],'Managing')==0)
           {
-             header("Location: http://localhost/Warehouse-management-system-php/manager.php");
+             header("Location:".get_base_url()."manager.php");
              die();
           }
           else
           {
-             header("Location: http://localhost/Warehouse-management-system-php/employee.php");
+             header("Location:".get_base_url()."employee.php");
              die();
           }
        }
@@ -109,7 +109,7 @@ if (isset($_POST['login']))
             <label class="control-label">Password:</label>
             <input type="password"  class="form-control" name="pass" placeholder="Enter Password">
          </div>
-         <div><a href="forgotPwd.php">Forgot Password?</a></div>
+         <div><a href="forgotpass.php">Forgot Password?</a></div>
          <div ><input class="btn btn-primary" type="submit" value="Login" name="login"></div>
       </form>
    </div>

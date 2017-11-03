@@ -5,10 +5,10 @@
        $stype=$_SESSION['stype'];
        if(strcmp($stype,'buyer')==0)
        {
-           header("Location: http://localhost/Warehouse-management-system-php/welcomeb.php");
+           header("Location:".get_base_url()."welcomeb.php");
            die();
        } else {
-           header("Location: http://localhost/Warehouse-management-system-php/welcomes.php");
+           header("Location:".get_base_url()."welcomes.php");
            die();
        }
    }
@@ -17,12 +17,12 @@
       $department=$_SESSION['department'];
       if(strcmp("Managing",$department)==0)
       {
-         header("Location: http://localhost/Warehouse-management-system-php/manager.php");
+         header("Location:".get_base_url()."manager.php");
          die();
       }
       else
       {
-         header("Location: http://localhost/Warehouse-management-system-php/employee.php");
+         header("Location:".get_base_url()."employee.php");
          die();
       }
    }

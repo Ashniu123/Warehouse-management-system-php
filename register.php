@@ -64,7 +64,8 @@
                if(mysqli_affected_rows($dbc))
                {
                   $success=1;
-                  // require('send-email.php');//confirmation link
+                  include 'send-email.php';
+                  sendMailToUser($email,$store_name);
                }
                else
                {

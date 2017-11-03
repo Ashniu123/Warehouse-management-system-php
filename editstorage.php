@@ -21,7 +21,7 @@ if(isset($_SESSION['emp_id']))
 else
 {
    $_SESSION['unlog']=1;
-   header("Location: http://localhost/Warehouse-management-system-php/admin.php");
+   header("Location:".get_base_url()."admin.php");
    die();
 }
 if(isset($_POST['update']))
